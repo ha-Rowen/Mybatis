@@ -5,11 +5,10 @@ import org.example.mybatis.service.TransferService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@ResponseBody
+
 public class controller {
 
     private final TransferService Ts;
@@ -18,8 +17,15 @@ public class controller {
         this.Ts=Ts;
     }
 
-    @GetMapping("/")
-    public ResponseEntity<String> mainPage( DTO dto)
+    @GetMapping("/d")
+    public ResponseEntity<String> af()
+    {
+        Ts.start();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<String> mainPage(@RequestBody DTO dto)
     {
         Long FromId = dto.getFromId ();
         Long ToId   = dto.getToId   ();
