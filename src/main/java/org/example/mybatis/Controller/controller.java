@@ -20,7 +20,7 @@ public class controller {
     @GetMapping("/d")
     public ResponseEntity<String> af()
     {
-        Ts.start();
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
